@@ -1,16 +1,10 @@
 <script>
-  import page from "../node_modules/page";
   import StyleGuide from "./StyleGuide.svelte";
   import Settings from "./Settings.svelte";
 
   let showHome = true;
   let showSettings = false;
   let showStyleGuide = false;
-
-  page('/', goToHome);
-  page('/styleGuide', goToStyleGuide);
-  page('/settings', goToSettings);
-  page();
 
   function goToSettings(ctx, next) {
     showHome = false;
