@@ -20,6 +20,6 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "navaid": "^1.0.4"
+    "svelte-routing": "^1.2.0"
   }
 }
