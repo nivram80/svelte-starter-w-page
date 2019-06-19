@@ -1,46 +1,17 @@
 <script>
+  import { Router, Link, Route } from "svelte-routing";
   import StyleGuide from "./StyleGuide.svelte";
   import Settings from "./Settings.svelte";
-
-  let showHome = true;
-  let showSettings = false;
-  let showStyleGuide = false;
-
-  function goToSettings(ctx, next) {
-    showHome = false;
-    showStyleGuide = false;
-    showSettings = true;
-  }
-
-  function goToStyleGuide() {
-    showHome = false;
-    showSettings = false;
-    showStyleGuide = true;
-  }
-
-  function goToHome() {
-    showSettings = false;
-    showStyleGuide = false;
-    showHome = true;
-  }
 </script>
 
-<a href="./">Home</a>
-<a href="./styleGuide">StyleGuide</a>
-<a href="./settings">Settings</a>
-
-<div id="content"></div>
-
-{#if showSettings}
-  <Settings />
-{/if}
-
-{#if showStyleGuide}
-  <StyleGuide />
-{/if}
-
-{#if showHome}
+<Router>
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="styleGuide">StyleGuide</Link>
+    <Link to="settings">Settings</Link>
+  </nav>
   <div>
-    <h1>This is the Home Page!</h1>
+    <Route path="styleGuide" component="{StyleGuide}" />
+    <Route path="settings" component="{Settings}" />
   </div>
-{/if}
+</Router>
