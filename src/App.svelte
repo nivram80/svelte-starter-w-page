@@ -1,52 +1,14 @@
 <script>
-  import page from "../node_modules/page";
+  import { Router, Route, Link } from 'svero';
   import StyleGuide from "./StyleGuide.svelte";
   import Settings from "./Settings.svelte";
-
-  let showHome = true;
-  let showSettings = false;
-  let showStyleGuide = false;
-
-  page('/', goToHome);
-  page('/styleGuide', goToStyleGuide);
-  page('/settings', goToSettings);
-  page();
-
-  function goToSettings(ctx, next) {
-    showHome = false;
-    showStyleGuide = false;
-    showSettings = true;
-  }
-
-  function goToStyleGuide() {
-    showHome = false;
-    showSettings = false;
-    showStyleGuide = true;
-  }
-
-  function goToHome() {
-    showSettings = false;
-    showStyleGuide = false;
-    showHome = true;
-  }
 </script>
 
-<a href="./">Home</a>
-<a href="./styleGuide">StyleGuide</a>
-<a href="./settings">Settings</a>
+<Router>
+  <Route path="/" />
+  <Route path="/styleGuide" component={StyleGuide} />
+  <Route path="/settings" component={Settings} />
+</Router>
 
-<div id="content"></div>
-
-{#if showSettings}
-  <Settings />
-{/if}
-
-{#if showStyleGuide}
-  <StyleGuide />
-{/if}
-
-{#if showHome}
-  <div>
-    <h1>This is the Home Page!</h1>
-  </div>
-{/if}
+<Link href="/styleGuide">StyleGuide</Link>
+<Link href="/settings">Settings</Link>
