@@ -1,10 +1,9 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
   import StyleGuide from "./StyleGuide.svelte";
   import Settings from "./Settings.svelte";
 </script>
 
-<Router>
+<!-- <Router>
   <nav>
     <Link to="/">Home</Link>
     <Link to="styleGuide">StyleGuide</Link>
@@ -14,4 +13,6 @@
     <Route path="styleGuide" component="{StyleGuide}" />
     <Route path="settings" component="{Settings}" />
   </div>
-</Router>
+</Router> -->
+
+<StyleGuide />

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { theme } from "./stores.js";
   import Theme from "./Theme.svelte";
   import Radio from "./Radio.svelte";
@@ -6,14 +6,16 @@
   import Button from "./Button.svelte";
   import Checkbox from "./Checkbox.svelte";
   import Select from "./Select.svelte";
+  import { addToString } from "test";
+  import { Font } from "font.interface";
   
-  let agreeToTerms = true;
+  let agreeToTerms: boolean = true;
   let arbitraryBoolean = false;
   let arbitraryBooleanII = false;
   let arbitraryBooleanIII = true;
   let automaticallySendEmail = false;
-  let font = "Roboto";
-  let fontOptions = [
+  let font: string = "Roboto";
+  let fontOptions: Font[] = [
     { id: "1000", fontName: "Helvetica" },
     { id: "1001", fontName: "Helvetica Greek" },
     { id: "1002", fontName: "Times New Roman" },
@@ -22,9 +24,11 @@
     { id: "1012", fontName: "Courier" },
     { id: "1024", fontName: "Arial" }
   ];
+  let randomString: string = "Bleep";
 
   const updateTheme = event => {
     theme.update(() => event.target.value);
+    console.log(addToString(randomString));
   };
   const updateAgreeToTerms = event => (agreeToTerms = event.target.checked);
   const updateAutomaticallySendEmail = event =>

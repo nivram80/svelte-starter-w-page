@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import typescript from "rollup-plugin-typescript2";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -22,7 +23,8 @@ export default {
 			// a separate file — better for performance
 			css: css => {
 				css.write('public/bundle.css');
-			}
+			},
+			preprocess: require("./svelte.config.js").preprocess
 		}),
 
 		// If you have external dependencies installed from
@@ -32,6 +34,7 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve({ browser: true }),
 		commonjs(),
+		typescript(),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
